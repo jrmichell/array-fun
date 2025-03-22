@@ -6,11 +6,13 @@ int rows;
 int cols;
 
 typedef struct {
-    int x;
-    int y;
+    int row;
+    int col;
 } Position;
 
-int generateNumber(int min, int max) { return rand() % (max - min + 1) + min; }
+int generateNumber(int min, int max) {
+    return rand() % (max - min + 1) + min;
+}
 
 int getLargestValue(int arr[rows][cols]) {
     int largest = 0;
@@ -42,8 +44,8 @@ Position getPosition(int arr[rows][cols], int target) {
     for (int i = 0; i < rows; i++) {
         for (int j = 0; j < cols; j++) {
             if (target == arr[i][j]) {
-                position.x = i;
-                position.y = j;
+                position.row = i;
+                position.col = j;
                 break;
             }
         }
@@ -60,6 +62,7 @@ void printArray(int arr[rows][cols]) {
         printf("\n");
     }
 }
+
 void fillArray(int arr[rows][cols]) {
     int min, max;
     printf("Enter range of numbers (min max): ");
@@ -86,9 +89,9 @@ int main() {
     Position largestPosition = getPosition(arr, largest);
     Position smallestPosition = getPosition(arr, smallest);
     printf("\nSmallest Value: %d | Position: [%d][%d]\n", smallest,
-           smallestPosition.x, smallestPosition.y);
+           smallestPosition.row, smallestPosition.col);
     printf("Largest Value: %d | Position: [%d][%d]\n", largest,
-           largestPosition.x, largestPosition.y);
+           largestPosition.row, largestPosition.col);
 
     return 0;
 }
